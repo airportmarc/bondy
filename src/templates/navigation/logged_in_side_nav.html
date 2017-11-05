@@ -1,0 +1,91 @@
+{% load staticfiles %}
+{% block side_nav_bar %}
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <a href="{% url 'users:detail' request.user.pk %}">
+                    <div class="dropdown profile-element"><span>
+                         <img alt="image" class="img-circle" src="{% static 'img/profile_small.jpg' %}">
+                        </span>
+                        </a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong
+                                    class="font-bold">{{ user.first_name }} {{ user.last_name }}</strong>
+                             </span> <span class="text-muted text-xs block">{{ user.profile.role }} <b
+                                    class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                {% for item in NAV_SIDE %}
+                <li class="active">
+
+                 {% if item.url_arg %}
+                    {% url item.url_name item.url_arg as the_url %}
+                 {% else %}
+                    {% url item.url_name as the_url %}
+                 {% endif %}
+
+
+                    <a href="{{ the_url }} "><i class="fa fa-th-large"></i><span class="nav-label">{{ item.name }}</span>
+                {% if 'submenu' in item %}
+                    <span class="fa arrow"></span>
+                {% endif %}
+                    </a>
+                {% if 'submenu' in item %}
+                        <ul class="nav nav-second-level collapse">
+                 {% for sub_item in item.submenu %}
+                               {% if item.url_arg %}
+                                     {% url sub_item.url_name sub_item.url_arg as sub_url %}
+                               {% else %}
+                                     {% url sub_item.url_name as sub_url %}
+                               {% endif %}
+
+                        <li><a href="{{ sub_url }}">{{sub_item.name}}</a></li>
+                 {% endfor %}
+
+                    </ul>
+                {% endif %}
+                </li>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+    </nav>
+{% endblock %}
+
+<!--
+This is a sample of the navigation menu basics
+<ul class="nav" id="side-menu">
+    <li class="nav-header">
+        <div class="dropdown profile-element"> <span>
+            <img alt="image" class="img-circle" src="img/profile_small.jpg">
+             </span>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Amelia Smith</strong>
+             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+                <li><a href="mailbox.html">Mailbox</a></li>
+                <li class="divider"></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="logo-element">
+            IN+
+        </div>
+    </li>
+    <li>
+        <!-- All li elements o navigation
+    </li>
+
+</ul>
+-->

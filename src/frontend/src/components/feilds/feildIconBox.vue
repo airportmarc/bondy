@@ -1,0 +1,26 @@
+<template>
+  <div class="btn-group" data-toggle="buttons">
+  <label v-for="" class="btn btn-primary">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+  </label>
+</div>
+
+</template>
+
+<script>
+import { abstractField } from 'vue-form-generator';
+
+export default {
+  mixins: [abstractField]
+};
+</script>
+
+<style>
+  
+</style>

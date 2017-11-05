@@ -1,0 +1,35 @@
+<div class="project-list">
+    <table class="table table-hover">
+        <tbody>
+        {% for item in object_list %}
+            <tr>
+                <td class="project-status">
+                        <span class="label label-primary">
+                            {{ item.status }}
+                        </span>
+                </td>
+                <td class="project-title">
+                    <a href="project_detail.html"> {{ item.name }}</a>
+                </td>
+                <td class="project-completion">
+                    {{ item.tripStart }}
+
+                </td>
+                <td class="project-people">
+                    {% for client in item.clients.all %}
+                        <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
+                    {% endfor %}
+                </td>
+                <td class="project-actions">
+                    <a href="{% url 'trips:detail' item.pk %}" class="btn btn-white btn-sm">
+                        <i class="fa fa-folder"></i> View </a>
+                    <a href="{% url 'trips:delete' item.pk %}" class="btn btn-white btn-sm"><i
+                            class="fa fa-pencil"></i> Delete </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+

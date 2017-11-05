@@ -1,0 +1,50 @@
+{% extends 'trips/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Your Trips{% endblock %}
+
+{% block page-heading %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-9">
+            <h2>View your Wishs</h2>
+        </div>
+    </div>
+{% endblock %}
+{% block page-content %}
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+    {% for item in object_list %}
+         <div class="col-lg-4">
+                <div class="contact-box">
+                    <a href="{# URL to property #}">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="{% static 'images\p1.jpg' %}">
+                            <div class="m-t-xs font-bold">{{ item.mls }}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><strong></strong></h3>
+                        <p><i class="fa fa-map-marker"></i> $299,000</p>
+                        <address>
+                            795 Folsom Ave, Suite 600<br>
+                            San Francisco, CA 94107<br>
+                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                        </address>
+                    </div>
+                    <div class="clearfix"></div>
+                        </a>
+                </div>
+            </div>
+    {% endfor %}
+
+
+
+
+
+    </div>
+
+{% endblock %}

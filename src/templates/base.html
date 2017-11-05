@@ -1,0 +1,128 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %} Main View {% endblock %}</title>
+
+    <link href={% static "css/bootstrap.min.css" %} rel="stylesheet">
+    <link href={% static "font-awesome/css/font-awesome.css" %} rel="stylesheet">
+
+    <link href={% static "css/animate.css" %} rel="stylesheet">
+    <link href={% static "css/style.css" %} rel="stylesheet">
+    <link href={% static "css/plugins/sweetalert/sweetalert.css" %} rel="stylesheet">
+    <link href={% static "css/plugins/select2/select2.min.css" %} rel="stylesheet">
+    <link href={% static "css/plugins/datetime/jquery.datetimepicker.min.css" %} rel="stylesheet">
+
+</head>
+{% block bodyTag %}<body>{% endblock %}
+{% block wholePage-body %}
+
+
+{% block wrapper-head %}<div id="wrapper">{% endblock %}
+
+    {% block nav-left-side %}
+        {% if user.is_authenticated %}
+            {% include 'navigation/logged_in_side_nav.html' %}
+        {% else %}
+
+        {% endif %}
+    {% endblock %}
+
+    {% block page-wrapper %} <div id="page-wrapper" class="gray-bg"> {% endblock %}
+    {% block nav-top %} {% include 'navigation/logged_in_top_nav.html' %} {% endblock %}
+    <div id="root">
+    {% block content %}
+        {% block page-heading %}
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-9">
+                    <h2>This is main title</h2>
+                    <ol class="breadcrumb">
+                        <li>
+
+                            <a href="index.html">This is</a>
+                        </li>
+                        <li class="active">
+                            <strong>Breadcrumb</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-3">
+                    <div class="title-action">
+                        <a href="" class="btn btn-primary">This is action area</a>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+
+        {% block page-content %}
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center m-t-lg">
+                            <h1>
+                                Welcome in INSPINIA Static SeedProject
+                            </h1>
+                            <small>
+
+                                It is an application skeleton for a typical web app. You can use it to quickly bootstrap
+                                your webapp projects and dev environment for these projects.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        {% endblock %}
+        {% block footer %}
+            </div>
+            <div class="footer">
+                <div class="pull-right">
+                    10GB of <strong>250GB</strong> Free.
+                </div>
+                <div>
+                    <strong>Copyright</strong> Example Company &copy; 2014-2017
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</div>
+{% block modals %}
+
+{% endblock %}
+{% endblock %}
+
+<!-- Mainly scripts -->
+
+<script src="https://unpkg.com/vue"></script>
+<script src={% static "js/jquery-3.1.1.min.js" %}></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
+<script src={% static "js/plugins/metisMenu/jquery.metisMenu.js" %}></script>
+<script src={% static "js/plugins/slimscroll/jquery.slimscroll.min.js" %}></script>
+
+<!--<script src={#% static "js/plugins/geocomplete/jquery.geocomplete.js" %#}></script>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDHFeqcarW_Mv1eCgKYaK7XnVjo5HWzC1A"></script> -->
+<!-- Custom and plugin javascript -->
+<script src={% static "js/inspinia.js" %}></script>
+<script src={% static "js/plugins/pace/pace.min.js" %}></script>
+<script src={% static "js/plugins/datepicker/bootstrap-datepicker.js" %}></script>
+<script src={% static "js/plugins/sweetalert/sweetalert.min.js" %}></script>
+<script src={% static "js/plugins/select2/select2.full.min.js" %}></script>
+<script src={% static "js/plugins/datetime/jquery.datetimepicker.full.min.js" %}></script>
+<script src={% static "js/main.js" %}></script>
+<script src={% static "js/project.js" %}></script>
+
+<script>
+
+
+
+</script>
+
+
+</body>
+
+</html>
